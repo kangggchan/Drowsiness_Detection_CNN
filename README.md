@@ -71,7 +71,7 @@ This system represents a significant step towards increasing road safety by iden
 ### **Instructions**
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/drowsiness-detection.git
+   git clone https://github.com/kangggchan/Drowsiness_Detection_CNN.git
    cd drowsiness-detection
    ```
 2. Install dependencies:
