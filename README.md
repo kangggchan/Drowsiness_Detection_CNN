@@ -24,22 +24,51 @@ This system represents a significant step towards increasing road safety by iden
 
 ### **Project Structure**
 ```
-├── data/                # Training and testing datasets
-├── models/              # Trained models (CNN, MobileNet-based)
+├── data/                
+│   ├── dataset            # For training CNN model
+│   ├── Drowsiness_Val.mp4 # For testing CNN + MTCNN
+│   ├── IMG_1494.mov       # For testing CNN + MTCNN
+│   └── IMG_1495.mov       # For testing CNN + MTCNN
+├── models/                # Trained CNN models
+│   └── SimpleModel.keras 
 ├── src/
-│   ├── detection.py     # Face and eye detection using MTCNN
-│   ├── classification.py# Eye state classification using CNN
-│   ├── drowsiness.py    # Main script for combining detection and classification
-│   └── utils.py         # Utility functions for preprocessing and metrics
+│   ├── eyes-open-closed-classification-using-cnn-model.ipynb   
+│   ├── drowsiness_tracking.ipynb  
+│   └── live_experiment.py         
 ├── results/
+│   ├── Drowsiness_Val_output.avi
 │   ├── confusion_matrix.png
 │   ├── training_plot.png
-│   └── performance_metrics.csv
+│   └── accuracy.png
 ├── README.md            # Project documentation
 └── requirements.txt     # Python dependencies
 ```
+---
 
-### **Setup Instructions**
+## **Performance Metrics**
+
+### **1. Accuracy**
+- The CNN model achieved a **99% accuracy** for the binary eye state classification task.  
+![Accuracy](results/accuracy.png)
+### **2. Speed**
+- **18ms/step** on average for eye state classification with preprocessed frames.
+
+### **Visualizations**
+1. **Confusion Matrix**:
+   ![Confusion Matrix](results/confusion_matrix.png)
+
+2. **Training Performance**:
+   ![Training Plot](results/training_plot.png)
+   
+---
+
+## **Installation and Usage**
+
+### **Prerequisites**
+- Python >= 3.7
+- A compatible GPU (optional for faster inference).
+
+### **Instructions**
 1. Clone the repository:
    ```bash
    git clone https://github.com/yourusername/drowsiness-detection.git
@@ -51,64 +80,28 @@ This system represents a significant step towards increasing road safety by iden
    ```
 3. Run the detection system:
    ```bash
-   python src/drowsiness.py
+   python src/live_experiment.py
    ```
 
 ---
-
-## **Performance Metrics**
-
-### **1. Accuracy**
-- The CNN model achieved a **99% accuracy** for the binary eye state classification task.  
-
-### **2. Speed**
-- **18ms/step** on average for eye state classification with preprocessed frames.
-
-### **3. Memory**
-- Model optimized for deployment with moderate GPU resources.
-
-### **Visualizations**
-1. **Confusion Matrix**:
-   ![Confusion Matrix](results/confusion_matrix.png)
-
-2. **Training Performance**:
-   ![Training Plot](results/training_plot.png)
-
----
-
-## **Installation and Usage**
-
-### **Prerequisites**
-- Python >= 3.7
-- A compatible GPU (optional for faster inference).
-
-### **Instructions**
-1. Clone the repository and install dependencies (see **Setup Instructions**).  
-2. To process a video file for drowsiness detection:
-   ```bash
-   python src/drowsiness.py --input path_to_video.mp4
-   ```
-3. To run real-time detection using a webcam:
-   ```bash
-   python src/drowsiness.py --realtime
-   ```
-
----
-
 ## **References and Documentation**
 
 ### **Datasets Used**:
-1. **Eye Classification Dataset**:
+1. **[YAWN Eye Dataset](www.kaggle.com/datasets/serenaraju/yawn-eye-dataset-new)**:
    - Used to train the CNN model for eye state classification.  
-2. **Video Dataset**:
-   - Evaluated the combined performance of the CNN and MTCNN system.  
+2. **[Driver Drowsiness Dataset D3S](https://github.com/bindujiit/Driver-Drowsiness-Dataset-D3S-)**:
+   - Evaluated the combined performance of the CNN and MTCNN.  
 
 ### **Key Papers**:
-1. *Paper on Eye Classification Dataset* ([To be edited]).  
-2. *Paper on Video Dataset for Drowsiness Detection* ([To be edited]).  
+1. *[Drowsiness detection in real-time
+via convolutional neural networks and transfer
+learning](https://doi.org/10.1186/s44147-024-00457-z)*.
+Salem, D., & Waleed, M. (2024). Drowsiness detection in real-time via convolutional neural networks and transfer learning. Journal of Engineering and Applied Science, 71(1), 1-15.
+3. *[Real-Time Driver's Drowsiness Monitoring Based on Dynamically Varying Threshold](http://dx.doi.org/10.1109/IC3.2018.8530651)*
+Gupta, Isha & Garg, Novesh & Aggarwal, Apoorva & Nepalia, Nitin & Verma, Bindu. (2018). Real-Time Driver's Drowsiness Monitoring Based on Dynamically Varying Threshold. 1-6.
 
 ### **Techniques**:
-- **MTCNN**: Multi-task Cascaded Convolutional Networks for real-time face and eye detection.  
+- **MTCNN**: Multi-task Cascaded Convolutional Networks for real-time face and eye detection and tracking.  
 - **Custom CNN Model**: Efficient binary classification of eye states.  
 
 ---
@@ -128,14 +121,14 @@ This system represents a significant step towards increasing road safety by iden
 
 ### **How to Contribute**:
 - Report issues or suggest features by opening a GitHub issue.  
-- Contribute code via pull requests following the guidelines in `CONTRIBUTING.md`.  
+- Contribute code via pull requests.  
 
 ---
 
 ## **Future Work**
 
 1. **Faster Processing**:  
-   - Investigate lightweight models like **fastMTCNN** or quantized MobileNet for deployment on low-end devices.  
+   - Investigate lightweight models like **fastMTCNN** or quantized MobileNet/ResNet50 for deployment on low-end devices.  
 
 2. **Expand Features**:  
    - Integrate yawning detection to complement eye gesture-based analysis.  
@@ -148,7 +141,3 @@ This system represents a significant step towards increasing road safety by iden
 
 ### **Thank You for Your Support!**  
 We welcome contributions and feedback to improve this project. Let's make roads safer together!
-
---- 
-
-You can now customize the placeholders (e.g., dataset/paper names and paths) and add additional information if needed!
