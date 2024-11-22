@@ -6,11 +6,11 @@ import matplotlib.patches as patches
 
 
 # Load the pre-trained model
-model = tf.keras.models.load_model('/Users/khangbuiphuoc/Study/Computer_Science/ComputerVision/DrowsinessDetection/DrowsinessTracking/SimpleModel.keras') 
+model = tf.keras.models.load_model('./model/SimpleModel.keras') 
 img_size = (128, 128)  # Model input size
 
 # Edit the video path
-video_path = "/Users/khangbuiphuoc/Study/Computer_Science/ComputerVision/DrowsinessDetection/Drowsiness_Val.mp4"
+video_path = "./data/Drowsiness_Val.mp4"
 cap = cv2.VideoCapture(video_path)
 
 # Function to get bounding boxes for eyes
@@ -26,7 +26,7 @@ def get_eye_bounding_boxes(left_eye, right_eye, box_size=128):
     return left_bbox, right_bbox
 
 # Real-time drowsiness detection function
-def process_real_time(model, detector, closed_frame_threshold=10):
+def process_real_time(model, detector, closed_frame_threshold=10): #Edit the threshold based on device performances
     cap = cv2.VideoCapture(0)  # Use 0 for default webcam
     fps = cap.get(cv2.CAP_PROP_FPS) or 30  # Approximate FPS if unavailable
     closed_frames = 0  # Counter for consecutive closed-eye frames
@@ -215,5 +215,5 @@ detector = MTCNN()
 # Run the real-time detection
 process_real_time(model, detector)
 
-output_path = "/Users/khangbuiphuoc/Study/Computer_Science/ComputerVision/DrowsinessDetection/Drowsiness_Val_output.avi"  # Output file path
+output_path = "./results/Drowsiness_Val_output.avi"  # Output file path
 # process_video(video_path, output_path, model, detector)

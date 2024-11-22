@@ -52,7 +52,7 @@ This system represents a significant step towards increasing road safety by iden
 ![Accuracy](results/accuracy.png)
 ### **2. Speed**
 - **18ms/step** on average for eye state classification with preprocessed frames.
-
+   ![Speed](results/speed_per_step.png)
 ### **Visualizations**
 1. **Confusion Matrix**:
    ![Confusion Matrix](results/confusion_matrix.png)
