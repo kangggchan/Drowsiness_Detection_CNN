@@ -1,15 +1,6 @@
 # **Real-Time Driver Drowsiness Detection System**
-<<<<<<< HEAD
 ## Student Name: 배복캉
 ## Student Number: 2021117446
-<<<<<<< HEAD
-=======
-
-=======
-## **Student Name: 배복캉
-## **Student Number: 2021117446
->>>>>>> 578a301 (Update README.md)
->>>>>>> 3c8a8f5 (Update README.md)
 ---
 
 ## **Overview and Results**
